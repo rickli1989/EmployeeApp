@@ -2,7 +2,16 @@ type Employee {
   id: ID! @unique
   firstName: String!
   lastName: String!
-  description: String!
-  skills: [String!]
+  jobTitle: String!
+  bio: String!
 	avatar: String!
+  age: Int!,
+  dateJoined: DateTime!
+}
+
+type Company {
+  id: ID! @unique
+  companyName: String! @unique,
+  companyMotto: String!,
+  companyEst: DateTime!
 }

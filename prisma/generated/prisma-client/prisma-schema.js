@@ -1,9 +1,151 @@
-export const typeDefs = /* GraphQL */ `type AggregateEmployee {
+module.exports = {
+        typeDefs: /* GraphQL */ `type AggregateCompany {
+  count: Int!
+}
+
+type AggregateEmployee {
   count: Int!
 }
 
 type BatchPayload {
   count: Long!
+}
+
+type Company {
+  id: ID!
+  companyName: String!
+  companyMotto: String!
+  companyEst: DateTime!
+}
+
+type CompanyConnection {
+  pageInfo: PageInfo!
+  edges: [CompanyEdge]!
+  aggregate: AggregateCompany!
+}
+
+input CompanyCreateInput {
+  companyName: String!
+  companyMotto: String!
+  companyEst: DateTime!
+}
+
+type CompanyEdge {
+  node: Company!
+  cursor: String!
+}
+
+enum CompanyOrderByInput {
+  id_ASC
+  id_DESC
+  companyName_ASC
+  companyName_DESC
+  companyMotto_ASC
+  companyMotto_DESC
+  companyEst_ASC
+  companyEst_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CompanyPreviousValues {
+  id: ID!
+  companyName: String!
+  companyMotto: String!
+  companyEst: DateTime!
+}
+
+type CompanySubscriptionPayload {
+  mutation: MutationType!
+  node: Company
+  updatedFields: [String!]
+  previousValues: CompanyPreviousValues
+}
+
+input CompanySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CompanyWhereInput
+  AND: [CompanySubscriptionWhereInput!]
+  OR: [CompanySubscriptionWhereInput!]
+  NOT: [CompanySubscriptionWhereInput!]
+}
+
+input CompanyUpdateInput {
+  companyName: String
+  companyMotto: String
+  companyEst: DateTime
+}
+
+input CompanyUpdateManyMutationInput {
+  companyName: String
+  companyMotto: String
+  companyEst: DateTime
+}
+
+input CompanyWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  companyName: String
+  companyName_not: String
+  companyName_in: [String!]
+  companyName_not_in: [String!]
+  companyName_lt: String
+  companyName_lte: String
+  companyName_gt: String
+  companyName_gte: String
+  companyName_contains: String
+  companyName_not_contains: String
+  companyName_starts_with: String
+  companyName_not_starts_with: String
+  companyName_ends_with: String
+  companyName_not_ends_with: String
+  companyMotto: String
+  companyMotto_not: String
+  companyMotto_in: [String!]
+  companyMotto_not_in: [String!]
+  companyMotto_lt: String
+  companyMotto_lte: String
+  companyMotto_gt: String
+  companyMotto_gte: String
+  companyMotto_contains: String
+  companyMotto_not_contains: String
+  companyMotto_starts_with: String
+  companyMotto_not_starts_with: String
+  companyMotto_ends_with: String
+  companyMotto_not_ends_with: String
+  companyEst: DateTime
+  companyEst_not: DateTime
+  companyEst_in: [DateTime!]
+  companyEst_not_in: [DateTime!]
+  companyEst_lt: DateTime
+  companyEst_lte: DateTime
+  companyEst_gt: DateTime
+  companyEst_gte: DateTime
+  AND: [CompanyWhereInput!]
+  OR: [CompanyWhereInput!]
+  NOT: [CompanyWhereInput!]
+}
+
+input CompanyWhereUniqueInput {
+  id: ID
+  companyName: String
 }
 
 scalar DateTime
@@ -225,6 +367,12 @@ input EmployeeWhereUniqueInput {
 scalar Long
 
 type Mutation {
+  createCompany(data: CompanyCreateInput!): Company!
+  updateCompany(data: CompanyUpdateInput!, where: CompanyWhereUniqueInput!): Company
+  updateManyCompanies(data: CompanyUpdateManyMutationInput!, where: CompanyWhereInput): BatchPayload!
+  upsertCompany(where: CompanyWhereUniqueInput!, create: CompanyCreateInput!, update: CompanyUpdateInput!): Company!
+  deleteCompany(where: CompanyWhereUniqueInput!): Company
+  deleteManyCompanies(where: CompanyWhereInput): BatchPayload!
   createEmployee(data: EmployeeCreateInput!): Employee!
   updateEmployee(data: EmployeeUpdateInput!, where: EmployeeWhereUniqueInput!): Employee
   updateManyEmployees(data: EmployeeUpdateManyMutationInput!, where: EmployeeWhereInput): BatchPayload!
@@ -251,6 +399,9 @@ type PageInfo {
 }
 
 type Query {
+  company(where: CompanyWhereUniqueInput!): Company
+  companies(where: CompanyWhereInput, orderBy: CompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Company]!
+  companiesConnection(where: CompanyWhereInput, orderBy: CompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CompanyConnection!
   employee(where: EmployeeWhereUniqueInput!): Employee
   employees(where: EmployeeWhereInput, orderBy: EmployeeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Employee]!
   employeesConnection(where: EmployeeWhereInput, orderBy: EmployeeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EmployeeConnection!
@@ -258,6 +409,9 @@ type Query {
 }
 
 type Subscription {
+  company(where: CompanySubscriptionWhereInput): CompanySubscriptionPayload
   employee(where: EmployeeSubscriptionWhereInput): EmployeeSubscriptionPayload
 }
 `
+      }
+    

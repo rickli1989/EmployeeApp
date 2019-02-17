@@ -2,5 +2,5 @@ endpoint: https://us1.prisma.sh/rick-c026d0/westpac-test/dev
 datamodel: datamodel.prisma
 
 generate:
-  - generator: typescript-client
+  - generator: javascript-client
     output: ./generated/prisma-client/

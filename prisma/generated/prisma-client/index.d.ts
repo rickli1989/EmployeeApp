@@ -14,6 +14,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
+  company: (where?: CompanyWhereInput) => Promise<boolean>;
   employee: (where?: EmployeeWhereInput) => Promise<boolean>;
 }
 
@@ -36,6 +37,25 @@ export interface Prisma {
    * Queries
    */
 
+  company: (where: CompanyWhereUniqueInput) => CompanyPromise;
+  companies: (args?: {
+    where?: CompanyWhereInput;
+    orderBy?: CompanyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Company>;
+  companiesConnection: (args?: {
+    where?: CompanyWhereInput;
+    orderBy?: CompanyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => CompanyConnectionPromise;
   employee: (where: EmployeeWhereUniqueInput) => EmployeePromise;
   employees: (args?: {
     where?: EmployeeWhereInput;
@@ -61,6 +81,22 @@ export interface Prisma {
    * Mutations
    */
 
+  createCompany: (data: CompanyCreateInput) => CompanyPromise;
+  updateCompany: (args: {
+    data: CompanyUpdateInput;
+    where: CompanyWhereUniqueInput;
+  }) => CompanyPromise;
+  updateManyCompanies: (args: {
+    data: CompanyUpdateManyMutationInput;
+    where?: CompanyWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCompany: (args: {
+    where: CompanyWhereUniqueInput;
+    create: CompanyCreateInput;
+    update: CompanyUpdateInput;
+  }) => CompanyPromise;
+  deleteCompany: (where: CompanyWhereUniqueInput) => CompanyPromise;
+  deleteManyCompanies: (where?: CompanyWhereInput) => BatchPayloadPromise;
   createEmployee: (data: EmployeeCreateInput) => EmployeePromise;
   updateEmployee: (args: {
     data: EmployeeUpdateInput;
@@ -86,6 +122,9 @@ export interface Prisma {
 }
 
 export interface Subscription {
+  company: (
+    where?: CompanySubscriptionWhereInput
+  ) => CompanySubscriptionPayloadSubscription;
   employee: (
     where?: EmployeeSubscriptionWhereInput
   ) => EmployeeSubscriptionPayloadSubscription;
@@ -98,6 +137,20 @@ export interface ClientConstructor<T> {
 /**
  * Types
  */
+
+export type CompanyOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "companyName_ASC"
+  | "companyName_DESC"
+  | "companyMotto_ASC"
+  | "companyMotto_DESC"
+  | "companyEst_ASC"
+  | "companyEst_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type EmployeeOrderByInput =
   | "id_ASC"
@@ -122,6 +175,67 @@ export type EmployeeOrderByInput =
   | "updatedAt_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type CompanyWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  companyName?: String;
+}>;
+
+export interface CompanyWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  companyName?: String;
+  companyName_not?: String;
+  companyName_in?: String[] | String;
+  companyName_not_in?: String[] | String;
+  companyName_lt?: String;
+  companyName_lte?: String;
+  companyName_gt?: String;
+  companyName_gte?: String;
+  companyName_contains?: String;
+  companyName_not_contains?: String;
+  companyName_starts_with?: String;
+  companyName_not_starts_with?: String;
+  companyName_ends_with?: String;
+  companyName_not_ends_with?: String;
+  companyMotto?: String;
+  companyMotto_not?: String;
+  companyMotto_in?: String[] | String;
+  companyMotto_not_in?: String[] | String;
+  companyMotto_lt?: String;
+  companyMotto_lte?: String;
+  companyMotto_gt?: String;
+  companyMotto_gte?: String;
+  companyMotto_contains?: String;
+  companyMotto_not_contains?: String;
+  companyMotto_starts_with?: String;
+  companyMotto_not_starts_with?: String;
+  companyMotto_ends_with?: String;
+  companyMotto_not_ends_with?: String;
+  companyEst?: DateTimeInput;
+  companyEst_not?: DateTimeInput;
+  companyEst_in?: DateTimeInput[] | DateTimeInput;
+  companyEst_not_in?: DateTimeInput[] | DateTimeInput;
+  companyEst_lt?: DateTimeInput;
+  companyEst_lte?: DateTimeInput;
+  companyEst_gt?: DateTimeInput;
+  companyEst_gte?: DateTimeInput;
+  AND?: CompanyWhereInput[] | CompanyWhereInput;
+  OR?: CompanyWhereInput[] | CompanyWhereInput;
+  NOT?: CompanyWhereInput[] | CompanyWhereInput;
+}
 
 export type EmployeeWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
@@ -233,6 +347,24 @@ export interface EmployeeWhereInput {
   NOT?: EmployeeWhereInput[] | EmployeeWhereInput;
 }
 
+export interface CompanyCreateInput {
+  companyName: String;
+  companyMotto: String;
+  companyEst: DateTimeInput;
+}
+
+export interface CompanyUpdateInput {
+  companyName?: String;
+  companyMotto?: String;
+  companyEst?: DateTimeInput;
+}
+
+export interface CompanyUpdateManyMutationInput {
+  companyName?: String;
+  companyMotto?: String;
+  companyEst?: DateTimeInput;
+}
+
 export interface EmployeeCreateInput {
   firstName: String;
   lastName: String;
@@ -263,6 +395,17 @@ export interface EmployeeUpdateManyMutationInput {
   dateJoined?: DateTimeInput;
 }
 
+export interface CompanySubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: CompanyWhereInput;
+  AND?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput;
+  OR?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput;
+  NOT?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput;
+}
+
 export interface EmployeeSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
@@ -276,6 +419,106 @@ export interface EmployeeSubscriptionWhereInput {
 
 export interface NodeNode {
   id: ID_Output;
+}
+
+export interface Company {
+  id: ID_Output;
+  companyName: String;
+  companyMotto: String;
+  companyEst: DateTimeOutput;
+}
+
+export interface CompanyPromise extends Promise<Company>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  companyName: () => Promise<String>;
+  companyMotto: () => Promise<String>;
+  companyEst: () => Promise<DateTimeOutput>;
+}
+
+export interface CompanySubscription
+  extends Promise<AsyncIterator<Company>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  companyName: () => Promise<AsyncIterator<String>>;
+  companyMotto: () => Promise<AsyncIterator<String>>;
+  companyEst: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface CompanyConnection {
+  pageInfo: PageInfo;
+  edges: CompanyEdge[];
+}
+
+export interface CompanyConnectionPromise
+  extends Promise<CompanyConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CompanyEdge>>() => T;
+  aggregate: <T = AggregateCompanyPromise>() => T;
+}
+
+export interface CompanyConnectionSubscription
+  extends Promise<AsyncIterator<CompanyConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CompanyEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCompanySubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CompanyEdge {
+  node: Company;
+  cursor: String;
+}
+
+export interface CompanyEdgePromise extends Promise<CompanyEdge>, Fragmentable {
+  node: <T = CompanyPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CompanyEdgeSubscription
+  extends Promise<AsyncIterator<CompanyEdge>>,
+    Fragmentable {
+  node: <T = CompanySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateCompany {
+  count: Int;
+}
+
+export interface AggregateCompanyPromise
+  extends Promise<AggregateCompany>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCompanySubscription
+  extends Promise<AsyncIterator<AggregateCompany>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Employee {
@@ -334,29 +577,6 @@ export interface EmployeeConnectionSubscription
   aggregate: <T = AggregateEmployeeSubscription>() => T;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface EmployeeEdge {
   node: Employee;
   cursor: String;
@@ -406,6 +626,56 @@ export interface BatchPayloadSubscription
   extends Promise<AsyncIterator<BatchPayload>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface CompanySubscriptionPayload {
+  mutation: MutationType;
+  node: Company;
+  updatedFields: String[];
+  previousValues: CompanyPreviousValues;
+}
+
+export interface CompanySubscriptionPayloadPromise
+  extends Promise<CompanySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CompanyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CompanyPreviousValuesPromise>() => T;
+}
+
+export interface CompanySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CompanySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CompanySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CompanyPreviousValuesSubscription>() => T;
+}
+
+export interface CompanyPreviousValues {
+  id: ID_Output;
+  companyName: String;
+  companyMotto: String;
+  companyEst: DateTimeOutput;
+}
+
+export interface CompanyPreviousValuesPromise
+  extends Promise<CompanyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  companyName: () => Promise<String>;
+  companyMotto: () => Promise<String>;
+  companyEst: () => Promise<DateTimeOutput>;
+}
+
+export interface CompanyPreviousValuesSubscription
+  extends Promise<AsyncIterator<CompanyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  companyName: () => Promise<AsyncIterator<String>>;
+  companyMotto: () => Promise<AsyncIterator<String>>;
+  companyEst: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface EmployeeSubscriptionPayload {
@@ -482,11 +752,6 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
-
-/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -495,6 +760,11 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
@@ -509,6 +779,10 @@ export type Long = string;
 
 export const models: Model[] = [
   {
+    name: "Company",
+    embedded: false
+  },
+  {
     name: "Employee",
     embedded: false
   }
@@ -518,9 +792,4 @@ export const models: Model[] = [
  * Type Defs
  */
 
-export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
-  typeDefs,
-  models,
-  endpoint: `https://us1.prisma.sh/rick-c026d0/westpac-test/dev`
-});
-export const prisma = new Prisma();
+export const prisma: Prisma;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { graphql } from 'react-apollo'
+import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withStyles } from '@material-ui/core/styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -61,8 +61,10 @@ class HomePage extends React.Component {
   }
 
   render() {
+    console.log(this.props.employeeQuery);
+    console.log(this.props.companyQuery);
     const { classes } = this.props
-    if (this.props.homeContentQuery.loading) {
+    if (this.props.employeeQuery.loading) {
       return (
         <div className={classes.root}>
           <CircularProgress size={100} />
@@ -80,25 +82,47 @@ class HomePage extends React.Component {
   }
 }
 
-export const HOME_CONTENT_QUERY = gql`
-  query homeContentQuery {
-    homeContents(orderBy: createdAt_DESC) {
+export const EMPLOYEE_QUERY = gql`
+  query employeeQuery {
+    employees(orderBy: dateJoined_DESC) {
       id,
       firstName,
       lastName,
-      description,
-      skills,
-      avatar
-
+      jobTitle,
+      bio,
+      avatar,
+      age,
+      dateJoined
     }
   }
 `
 
-const HomePageWithQuery = graphql(HOME_CONTENT_QUERY, {
-  name: 'homeContentQuery',
-  options: {
-    fetchPolicy: 'network-only'
+export const COMPANY_QUERY = gql `
+  query companyQuery {
+    company(where: {
+      companyName: "Westpac"
+    }) {
+      id,
+      companyName,
+      companyMotto,
+      companyEst
+    }
   }
-})(HomePage)
+`
+
+const HomePageWithQuery = compose(
+  graphql(EMPLOYEE_QUERY, {
+    name: 'employeeQuery',
+    options: {
+      fetchPolicy: 'network-only'
+    }
+  }),
+  graphql(COMPANY_QUERY, {
+    name: 'companyQuery',
+    options: {
+      fetchPolicy: 'network-only'
+    }
+  })
+)(HomePage)
 
 export default withStyles(styles)(HomePageWithQuery)
