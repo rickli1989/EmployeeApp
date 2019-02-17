@@ -11,10 +11,24 @@ import HomeIcon from '@material-ui/icons/Home'
 import QuestionIcon from '@material-ui/icons/QuestionAnswer'
 import MoreIcon from '@material-ui/icons/MoreVert'
 import { StyledLink } from './StyledLink'
+import dateFns from 'date-fns';
 import { withRouter } from 'react-router-dom'
 const styles = theme => ({
   root: {
     width: '100%'
+  },
+  h1: {
+    padding: 0,
+    margin: 0
+  },
+  toolbar: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between'
+  },
+  companyEst: {
+    display: 'flex',
+    alignItems: 'flex-end'
   },
   grow: {
     flexGrow: 1
@@ -92,7 +106,7 @@ class AppNavBar extends React.Component {
     const { mobileMoreAnchorEl } = this.state
     const { classes } = this.props
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
-
+    
     const renderMobileMenu = (
       <Menu
         anchorEl={mobileMoreAnchorEl}
@@ -109,7 +123,19 @@ class AppNavBar extends React.Component {
       <div className={classes.root}>
         <AppBar position='absolute'>
           <Toolbar>
-            
+            {
+              this.props.companyInfo ? <div className={classes.toolbar}>
+                <div>
+                  <h1 className={classes.h1}>{this.props.companyInfo.companyName}</h1>
+                  <span>{this.props.companyInfo.companyMotto}</span>
+                </div>
+                <div className={classes.companyEst}>
+                  Date of establishment {
+                    dateFns.format(this.props.companyInfo.companyEst, 'DD MMM YYYY')
+                  }
+                </div>
+              </div> : <React.Fragment></React.Fragment>
+            }
           </Toolbar>
         </AppBar>
         {renderMobileMenu}

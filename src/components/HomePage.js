@@ -62,7 +62,6 @@ class HomePage extends React.Component {
 
   render() {
     console.log(this.props.employeeQuery);
-    console.log(this.props.companyQuery);
     const { classes } = this.props
     if (this.props.employeeQuery.loading) {
       return (
@@ -97,28 +96,9 @@ export const EMPLOYEE_QUERY = gql`
   }
 `
 
-export const COMPANY_QUERY = gql `
-  query companyQuery {
-    company(where: {
-      companyName: "Westpac"
-    }) {
-      id,
-      companyName,
-      companyMotto,
-      companyEst
-    }
-  }
-`
-
 const HomePageWithQuery = compose(
   graphql(EMPLOYEE_QUERY, {
     name: 'employeeQuery',
-    options: {
-      fetchPolicy: 'network-only'
-    }
-  }),
-  graphql(COMPANY_QUERY, {
-    name: 'companyQuery',
     options: {
       fetchPolicy: 'network-only'
     }
