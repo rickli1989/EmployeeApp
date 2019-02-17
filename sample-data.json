@@ -1,0 +1,116 @@
+{
+  "companyInfo": {
+    "companyName": "Evans - Doyle",
+    "companyMotto": "viral grow channels",
+    "companyEst": "2013-06-13T22:52:11.127Z"
+  },
+  "employees": [{
+    "id": "245599a8-d483-433a-be15-b361a89aab89",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/flashmurphy/128.jpg",
+    "firstName": "Xavier",
+    "lastName": "Griffiths",
+    "jobTitle": "Dynamic Factors Architect",
+    "age": 64,
+    "bio": "Omnis quidem distinctio reprehenderit possimus voluptas. Voluptatem reprehenderit recusandae dolore aut qui officiis est. Dolor quaerat numquam. Sint voluptatem eius quidem vitae vel consequuntur.",
+    "dateJoined": "2017-05-05T09:52:48.444Z"
+  }, {
+    "id": "a7ff3e29-5a78-43dc-982a-c5c4542e4a7f",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/BryanHorsey/128.jpg",
+    "firstName": "Jett",
+    "lastName": "Morissette",
+    "jobTitle": "Future Marketing Technician",
+    "age": 45,
+    "bio": "Aliquam minima voluptates saepe et earum et aspernatur. Quidem et veritatis sit. Omnis harum sed et quidem. Voluptatem quisquam dolorem aperiam excepturi sed aut. Consequatur suscipit consequatur.",
+    "dateJoined": "2017-04-25T23:41:37.609Z"
+  }, {
+    "id": "953a9c01-c847-424a-ab6e-313871a8709c",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/flashmurphy/128.jpg",
+    "firstName": "Abbey",
+    "lastName": "Fay",
+    "jobTitle": "Central Paradigm Manager",
+    "age": 25,
+    "bio": "Quia et esse autem. Sapiente ducimus et velit perspiciatis fugit voluptates consectetur dolore. Totam debitis amet minima sapiente quia nisi.",
+    "dateJoined": "2013-12-11T06:36:32.850Z"
+  }, {
+    "id": "267bc019-d8b7-4b9e-9eb4-dd99d97bc6f4",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/victordeanda/128.jpg",
+    "firstName": "Isabel",
+    "lastName": "Fadel",
+    "jobTitle": "International Directives Agent",
+    "age": 53,
+    "bio": "Dignissimos debitis aperiam. Vel non quisquam dolorum porro. Alias corporis qui aliquid molestiae ducimus. Cumque vero corrupti blanditiis quam et accusamus qui ipsum. Voluptate est velit rerum sunt consequatur sed rerum. Modi odio cupiditate delectus vero quam.",
+    "dateJoined": "2018-02-21T14:01:53.196Z"
+  }, {
+    "id": "588627d1-8d57-48a6-a451-627ee981f284",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/mtolokonnikov/128.jpg",
+    "firstName": "Imogen",
+    "lastName": "Hamilton",
+    "jobTitle": "Principal Optimization Orchestrator",
+    "age": 63,
+    "bio": "Minima autem laboriosam accusantium dolores aliquam repellat. Magnam omnis iusto illo maiores omnis non. Blanditiis aspernatur totam. Repudiandae est quis. Accusamus tenetur eos qui excepturi vel est repellat quia et.",
+    "dateJoined": "2013-12-03T00:57:59.899Z"
+  }, {
+    "id": "a9ca4271-69b9-41c1-8874-9ead34cfcbdc",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/gipsy_raf/128.jpg",
+    "firstName": "Zac",
+    "lastName": "West",
+    "jobTitle": "Lead Group Producer",
+    "age": 44,
+    "bio": "Adipisci facilis sunt voluptatem accusantium. Molestiae rerum vel voluptatem in et ut porro voluptatem numquam. Tenetur accusantium asperiores reprehenderit laudantium consequatur nam minima consequuntur. Incidunt iure et suscipit eos sit ipsum. Cum iusto eveniet delectus ea quis a et qui officiis.",
+    "dateJoined": "2015-07-22T14:51:05.554Z"
+  }, {
+    "id": "ce7fbb34-8935-43d3-be95-6c09721db312",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/bluefx_/128.jpg",
+    "firstName": "Layla",
+    "lastName": "Garden",
+    "jobTitle": "Investor Research Consultant",
+    "age": 30,
+    "bio": "Dolorem dignissimos debitis tenetur minima itaque eius ducimus soluta dolores. Sint qui saepe consequatur nemo dolor sed placeat at laborum. Est aut sit. Et fugiat expedita nulla dolores accusantium sit inventore quidem. Quae dicta veritatis qui provident.",
+    "dateJoined": "2013-09-25T18:22:52.501Z"
+  }, {
+    "id": "d572eea9-07ba-466e-95d9-e0abc6d2935c",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/overra/128.jpg",
+    "firstName": "Alex",
+    "lastName": "Rees",
+    "jobTitle": "Senior Mobility Representative",
+    "age": 62,
+    "bio": "Non enim ea ut tenetur qui. Aut unde deserunt corrupti est qui esse aperiam. Voluptas omnis adipisci harum qui quo ab. Commodi ad ut ducimus sed dignissimos aut. Nemo sit maiores optio maiores dicta laudantium blanditiis animi dolores. Sint similique reprehenderit maxime tempore dolorem reiciendis quis adipisci quis.",
+    "dateJoined": "2013-06-21T21:50:40.723Z"
+  }, {
+    "id": "386c1fc9-c592-43e4-9530-29c5f2ae0f74",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/ZacharyZorbas/128.jpg",
+    "firstName": "Liam",
+    "lastName": "Evans",
+    "jobTitle": "Internal Brand Architect",
+    "age": 24,
+    "bio": "Modi eum aut libero temporibus voluptatem. Magnam eos ab voluptas aut molestiae. Inventore placeat quidem quis impedit voluptas iure perspiciatis nostrum.",
+    "dateJoined": "2015-12-16T00:25:01.019Z"
+  }, {
+    "id": "6dcc0a63-e615-4d6a-bda0-e01316ec1bbd",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/geobikas/128.jpg",
+    "firstName": "Beau",
+    "lastName": "Miller",
+    "jobTitle": "Principal Creative Associate",
+    "age": 27,
+    "bio": "Sit a fugit eligendi qui aspernatur suscipit voluptas dolorem nam. Ipsam sequi fuga sit asperiores consequatur rerum ipsa et autem. Ut esse nihil voluptates magnam. Ut eveniet exercitationem repellendus nihil vero officia molestias quas quo. Fuga sed est tenetur deleniti illo porro eos.",
+    "dateJoined": "2019-01-07T02:02:17.566Z"
+  }, {
+    "id": "1d0b1ebe-3f83-418c-818c-1e0f486baf54",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/bpartridge/128.jpg",
+    "firstName": "Henry",
+    "lastName": "Kuhn",
+    "jobTitle": "Principal Accounts Specialist",
+    "age": 43,
+    "bio": "Quisquam rerum debitis dolorem quaerat et dicta. Delectus eos harum optio est sint et sequi qui. Fugit reprehenderit quia temporibus quia qui est. Et voluptatem illo dicta. Animi dolorum quos molestiae perspiciatis error assumenda aut eum. Non enim unde ut labore et.",
+    "dateJoined": "2017-03-27T04:38:55.398Z"
+  }, {
+    "id": "7d15da61-b6a9-48aa-aa9f-5788e193afcf",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/magugzbrand2d/128.jpg",
+    "firstName": "Charlotte",
+    "lastName": "Koch",
+    "jobTitle": "Senior Infrastructure Officer",
+    "age": 60,
+    "bio": "Accusantium natus temporibus praesentium quos sapiente incidunt dolorum distinctio sint. Eius qui omnis fugit harum fugit eos omnis nesciunt voluptatem. Necessitatibus impedit animi aut nesciunt voluptas quia ea autem. Quidem quia quas aut et. Veritatis accusamus illum dolor.",
+    "dateJoined": "2015-02-21T06:44:16.803Z"
+  }]
+}
