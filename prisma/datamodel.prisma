@@ -1,0 +1,8 @@
+type Employee {
+  id: ID! @unique
+  firstName: String!
+  lastName: String!
+  description: String!
+  skills: [String!]
+	avatar: String!
+}

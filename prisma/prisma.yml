@@ -1,0 +1,6 @@
+endpoint: https://us1.prisma.sh/rick-c026d0/westpac-test/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/
