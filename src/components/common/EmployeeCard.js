@@ -11,13 +11,12 @@ import dateFns from 'date-fns';
 const styles = theme => ({
   card: {
     display: 'flex',
-    marginTop: '10px',
-    marginBottom: '10px',
-    minWidth: 400,
-    maxWidth: 400,
     minHeight: 151,
     maxHeight: 151,
-
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: 400,
+      minWidth: 400,
+    }
   },
   details: {
     display: 'flex',

@@ -17,7 +17,7 @@ const styles = theme => ({
     flexWrap: 'wrap',
     marginTop: 72,
     [theme.breakpoints.down('xs')]: {
-      height: 'calc(100vh - 56px)'
+      marginTop: 88
     }
   },
   overlay: {
@@ -44,11 +44,9 @@ const styles = theme => ({
     bottom: 0,
     transform: 'translate(-50%,0)'
   },
-  link: {
-    color: '#FFFFFF',
-    textDecoration: 'none',
-    '&:hover': {
-      color: '#e40000'
+  mediaDiv: {
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
     }
   }
 })
@@ -68,7 +66,7 @@ function HomePage(props) {
       className={classes.root}
     >
       {
-        props.employeeQuery.employees.map(e => <StyledDiv onClick={() => {
+        props.employeeQuery.employees.map(e => <StyledDiv className={classes.mediaDiv} onClick={() => {
           setEmployeeDetail(e);
         }} key={e.id} >
           <EmployeeCard employee={e}></EmployeeCard>    

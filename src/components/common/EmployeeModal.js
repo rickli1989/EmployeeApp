@@ -19,7 +19,20 @@ const styles = theme => ({
     color: theme.palette.grey[500],
   },
   content: {
-    display: 'flex'
+    display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column'
+    }
+  },
+  img: {
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    }
+  },
+  mobile: {
+    [theme.breakpoints.down('xs')]: {
+      float: 'right'
+    }
   }
 })
 
@@ -39,10 +52,10 @@ class EmployeeModal extends React.Component {
           </DialogTitle>
           <DialogContent className={classes.content}>
             <div style={{marginRight: '20px', minWidth: 200}}>
-              <img src={employee.avatar} />
-              <div>{employee.jobTitle}</div>
-              <div>{employee.age} years old</div>
-              <div>Joined at : {dateFns.format(employee.dateJoined, 'DD MMM YYYY')}</div>
+              <img className={classes.img} src={employee.avatar} />
+              <div className={classes.mobile}>{employee.jobTitle}</div>
+              <div className={classes.mobile}>{employee.age} years old</div>
+              <div className={classes.mobile}>Joined at : {dateFns.format(employee.dateJoined, 'DD MMM YYYY')}</div>
             </div>
             <DialogContentText>
               {employee.bio}
