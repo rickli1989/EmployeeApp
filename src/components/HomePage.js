@@ -20,30 +20,6 @@ const styles = theme => ({
       marginTop: 88
     }
   },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    position: 'relative',
-    zIndex: 1
-  },
-  heading: {
-    position: 'absolute',
-    color: '#ffffff',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%,-50%)',
-    fontSize: 70
-  },
-  subheading: {
-    position: 'absolute',
-    color: '#ffffff',
-    left: '50%',
-    bottom: 0,
-    transform: 'translate(-50%,0)'
-  },
   mediaDiv: {
     [theme.breakpoints.down('xs')]: {
       width: '100%'
