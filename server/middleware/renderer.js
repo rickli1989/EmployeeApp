@@ -13,7 +13,7 @@ import manifest from '../../build/asset-manifest.json';
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from '@material-ui/core/styles'
 import { SheetsRegistry } from 'react-jss/lib/jss';
 import JssProvider from 'react-jss/lib/JssProvider';
-
+const fetch = require('node-fetch')
 // function to extract js assets from the manifest
 const extractAssets = (assets, chunks) => Object.keys(assets)
     .filter(asset => chunks.indexOf(asset.replace('.js', '')) > -1)
