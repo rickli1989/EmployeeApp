@@ -10,7 +10,6 @@ import { withStyles } from '@material-ui/core/styles'
 import HomeIcon from '@material-ui/icons/Home'
 import QuestionIcon from '@material-ui/icons/QuestionAnswer'
 import MoreIcon from '@material-ui/icons/MoreVert'
-import { StyledLink } from './StyledLink'
 import dateFns from 'date-fns';
 import { withRouter } from 'react-router-dom'
 const styles = theme => ({

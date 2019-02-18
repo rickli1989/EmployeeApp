@@ -1,26 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withStyles } from '@material-ui/core/styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import EmployeeCard from './common/EmployeeCard';
+import { StyledDiv } from './common/StyledDiv';
+import EmployeeModal from './common/EmployeeModal';
+
 const styles = theme => ({
   root: {
     width: '100%',
     height: 'calc(100vh - 64px)',
-    display: 'flex',
-    marginTop: 64,
-    [theme.breakpoints.down('xs')]: {
-      marginTop: 56,
-      height: 'calc(100vh - 56px)'
-    },
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'repeat-x',
-    backgroundAttachment: 'fixed',
-    backgroundPosition: '100% 0',
-    animation: 'moving 15s linear infinite'
+    display: 'flex',
+    flexWrap: 'wrap',
+    marginTop: 72,
+    [theme.breakpoints.down('xs')]: {
+      height: 'calc(100vh - 56px)'
+    }
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -55,30 +53,34 @@ const styles = theme => ({
   }
 })
 
-class HomePage extends React.Component {
-  componentDidCatch(error, info) {
-    console.log(info.componentStack)
-  }
-
-  render() {
-    console.log(this.props.employeeQuery);
-    const { classes } = this.props
-    if (this.props.employeeQuery.loading) {
-      return (
-        <div className={classes.root}>
-          <CircularProgress size={100} />
-        </div>
-      )
-    }
+function HomePage(props) {
+  const [employeeDetail, setEmployeeDetail] = useState(null);
+  const { classes } = props
+  if (props.employeeQuery.loading) {
     return (
-      <div
-        className={classes.root}
-        
-      >
-        
+      <div className={classes.root}>
+        <CircularProgress size={100} />
       </div>
     )
   }
+  return (
+    <div
+      className={classes.root}
+    >
+      {
+        props.employeeQuery.employees.map(e => <StyledDiv onClick={() => {
+          setEmployeeDetail(e);
+        }} key={e.id} >
+          <EmployeeCard employee={e}></EmployeeCard>    
+        </StyledDiv>)
+      }
+      {
+        employeeDetail ?
+          <EmployeeModal employee={employeeDetail} open={employeeDetail ? true : false} close={() => setEmployeeDetail(null)}></EmployeeModal>
+        : <React.Fragment></React.Fragment>
+      }
+    </div>
+  )
 }
 
 export const EMPLOYEE_QUERY = gql`
